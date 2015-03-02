@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>$http CRU</title>
+  <link rel="stylesheet" href="../css/bootstrap.css"/>
+  <script src="../js/angular.js"></script>
+  <script src="../js/angular-ui-router.js"></script>
+  <script src="http_crud.js"></script>
+</head>
+<body ng-app="httpCrud" ng-controller="AppCtrl as app">
+
+<table class="table-bordered" style="float: left">
+  <thead>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="person in app.people track by person.id" ng-click="app.selectPerson(person)">
+    <td>{{person.firstName}}</td>
+    <td>{{person.lastName}}</td>
+    <td>{{person.email}}</td>
+  </tr>
+  </tbody>
+</table>
+
+<form role="form" style="float: left">
+  <div class="form-group">
+    <label>First Name:</label>
+    <input type="text" ng-model="app.selectedPerson.firstName"/></div>
+  <div class="form-group">
+    <label>Last Name:</label>
+    <input type="text" ng-model="app.selectedPerson.lastName"/>
+  </div>
+  <div class="form-group">
+    <label>Email:</label>
+    <input type="text" ng-model="app.selectedPerson.email"/>
+  </div>
+  <button ng-click="app.addPerson(app.selectedPerson)">Add</button>
+  <button ng-click="app.savePerson(app.selectedPerson)">Save</button>
+  <button ng-click="app.deletePerson(app.selectedPerson)">Delete</button>
+  <button ng-click="app.newPerson()">New</button>
+</form>
+
+
+</body>
+</html>

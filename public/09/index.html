@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Watching with Scope</title>
+  <link rel="stylesheet" href="../css/bootstrap.css"/>
+  <script src="../js/angular.js"></script>
+  <script src="watching_with_scope.js"></script>
+</head>
+<body ng-app="watchingWithScope" ng-controller="AppCtrl as app">
+
+
+<input type="text" ng-model="app.message" autofocus/>
+
+<div ng-controller="DashboardCtrl as dash">
+  <button ng-click="dash.addItem()">Add Item</button>
+  <button ng-click="dash.removeItem()">Remove Item</button>
+
+  <ol>
+    <li ng-repeat="item in dash.items">{{item}}</li>
+  </ol>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Filter and Order</title>
+  <link rel="stylesheet" href="../css/bootstrap.css"/>
+  <script src="../js/angular.js"></script>
+  <script src="filter_and_order.js"></script>
+</head>
+<body ng-app="filterAndOrder" ng-controller="AppCtrl as app">
+
+
+<fieldset><label>Filter</label>
+  <input type="text" ng-model="input.name"/>
+</fieldset>
+<table class="table">
+  <thead>
+  <tr>
+    <th ng-click="app.setOrder('firstName')">First Name</th>
+    <th ng-click="app.setOrder('lastName')">Last Name</th>
+    <th ng-click="app.setOrder('email')">Email</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr ng-repeat="person in app.people|filter:input.name|orderBy:app.order">
+    <td>{{person.firstName}}</td>
+    <td>{{person.lastName}}</td>
+    <td>{{person.email}}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>
